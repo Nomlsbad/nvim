@@ -31,8 +31,11 @@ return {
     opts = require "configs.conform",
   },
 
-  -- {
-  --   "karb94/neoscroll.nvim",
-  --   opts = require "configs.neoscroll",
-  -- },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.lint"
+    end,
+  },
 }
