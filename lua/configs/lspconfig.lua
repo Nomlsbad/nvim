@@ -10,7 +10,7 @@ lspconfig.servers = {
   "gopls",
 }
 
-local default_servers = { "docker_compose_language_service" }
+local default_servers = { "docker_compose_language_service", "pyright" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config

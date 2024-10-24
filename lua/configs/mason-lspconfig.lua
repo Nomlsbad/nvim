@@ -5,5 +5,6 @@ require("mason-lspconfig").setup {
     "lus_ls",
     "neocmake",
     "gopls",
+    "pyright",
   },
 }
