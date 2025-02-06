@@ -38,4 +38,14 @@ return {
       require "configs.lint"
     end,
   },
+
+  {
+    "stevearc/aerial.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = require "configs.aerial_opts",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
 }

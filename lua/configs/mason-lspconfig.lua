@@ -1,9 +1,7 @@
 require("mason-lspconfig").setup {
   ensure_installed = {
-    "clangd",
-    "docker_compose_language_service",
+    "dockerls",
     "lus_ls",
-    "neocmake",
     "gopls",
     "pyright",
   },

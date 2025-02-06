@@ -10,7 +10,11 @@ lspconfig.servers = {
   "gopls",
 }
 
-local default_servers = { "docker_compose_language_service", "pyright" }
+local default_servers = {
+  "pyright",
+  "dockerls",
+}
+
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -48,19 +52,25 @@ lspconfig.lua_ls.setup {
 }
 
 lspconfig.clangd.setup {
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-
-  settings = {},
-}
-
-lspconfig.gopls.setup {
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
     nvlsp.on_attach(client, bufnr)
   end,
+
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--log=verbose",
+    "--header-insertion=never",
+    "--completion-style=detailed",
+    "--ranking-model=decision_forest",
+  },
+}
+
+lspconfig.gopls.setup {
+  on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 
@@ -68,7 +78,6 @@ lspconfig.gopls.setup {
     gopls = {
       gofumpt = true,
       usePlaceholders = true,
-      semanticTokens = true,
       analyses = {
         shadow = true,
         unusedvariable = true,

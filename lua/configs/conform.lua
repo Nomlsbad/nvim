@@ -3,12 +3,15 @@ local options = {
     lua = { "stylua" },
     go = { "gofumpt", "goimports", "golines" },
     python = { "black" },
+    c = { "clang-format" },
+    cpp = { "clang-format" },
   },
 
   formatters = {
     golines = {
       prepend_args = { "--max-len=100" },
     },
+    ["clang-format"] = {},
   },
 
   format_on_save = {
