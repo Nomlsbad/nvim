@@ -9,6 +9,13 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    keys = {
+      {
+        "<leader>e",
+        "<cmd>Neotree toggle float focus reveal<cr>",
+        desc = "Toggle float filesystem tree"
+      },
+    },
     lazy = false,
     ---@module "neo-tree"
     ---@type neotree.Config?
