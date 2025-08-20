@@ -39,17 +39,6 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-vim.lsp.config("*", {
-  capabilities = {
-    workspace = {
-      fileOperations = {
-        didRename = true,
-        willRename = true,
-      },
-    },
-  },
-})
-
 require("config.options")
 require("config.lazy")
 require("config.mappings")
