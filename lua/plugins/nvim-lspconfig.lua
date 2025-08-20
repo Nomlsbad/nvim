@@ -6,23 +6,30 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
-    -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace Folder" })
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove Workspace Folder" })
-    vim.keymap.set(
+    local map = function(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = ev.buf
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
+    map("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+    map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+    map("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+    map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+    map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace Folder" })
+    map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder,
+      { desc = "Remove Workspace Folder" })
+    map(
       "n",
       "<space>wl",
       function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
       { desc = "List Workspace Folder" }
     )
-    vim.keymap.set("n", "gY", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
-    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { desc = "Rename" })
-    vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
+    map("n", "gY", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
+    map("n", "<space>rn", vim.lsp.buf.rename, { desc = "Rename" })
+    map({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+    map("n", "gr", vim.lsp.buf.references, { desc = "References" })
   end,
 })
 
