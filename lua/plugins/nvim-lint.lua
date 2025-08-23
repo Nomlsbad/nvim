@@ -14,20 +14,16 @@ return {
 
         go = { "golangcilint" }
       },
-      -- LazyVim extension to easily override linter options
-      -- or add custom linters.
       ---@type table<string,table>
       linters = {
-        -- -- Example of using selene only when a selene.toml file is present
-        -- selene = {
-        --   -- `condition` is another LazyVim extension that allows you to
-        --   -- dynamically enable/disable linters based on the context.
-        --   condition = function(ctx)
-        --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
-        --   end,
-        -- },
         golangcilint = {
-          cmd = vim.fn.system({ "go", "env", "GOPATH" }):sub(1, -2) .. "/bin/golangci-lint",
+          condition = function(ctx)
+            return vim.fs.find(
+              { ".golangci.yml", ".golangci.yaml", ".golangci.toml", ".golangci.json" },
+              { path = ctx.filename, upward = true }
+            )[1]
+          end,
+          cmd = "golangci-lint",
           args = {
             'run',
             '--output.json.path=stdout',
