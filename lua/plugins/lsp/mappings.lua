@@ -1,15 +1,6 @@
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  group = vim.api.nvim_create_augroup("UserLspConfig", { clear = false }),
   callback = function(ev)
-    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-    if not client:supports_method('workspace/fileOperations/willRename') then
-      vim.notify('method is not supported by any servers active on the current buffer')
-    end
-    if not client:supports_method('workspace/fileOperations/didRename') then
-      vim.notify('method is not supported by any servers active on the current buffer')
-    end
-
-
     vim.lsp.buf.hover = require("pretty_hover").hover
 
     -- Enable completion triggered by <c-x><c-o>
