@@ -37,10 +37,11 @@ return {
       },
       layout = {
         default_direction = "prefer_left",
+        preserve_equality = true,
       },
       attach_mode = "global",
       filter_kind = false,
-      autojump = true,
+      autojump = false,
       icons = require("config.icons")
     },
   },
