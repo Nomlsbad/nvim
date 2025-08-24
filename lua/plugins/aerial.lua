@@ -9,7 +9,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     local on_list = function(opts)
       local aerial = require("aerial")
-      aerial.toggle({ focus = false })
+      if not aerial.is_open() then
+        aerial.open({ focus = true })
+      else
+        aerial.focus()
+      end
     end
 
     map("n", "gO", function()
