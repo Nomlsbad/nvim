@@ -1,5 +1,12 @@
 local icons = require("config.icons")
 
+local severities = {
+  icons.diagnostics.Error,
+  icons.diagnostics.Warn,
+  icons.diagnostics.Info,
+  icons.diagnostics.Hint,
+}
+
 vim.diagnostic.config({
   signs = {
     severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN },
@@ -20,18 +27,7 @@ vim.diagnostic.config({
     source = false,
     prefix = function(diagnostic, i, total)
       if i ~= total then return "" end
-
-      if diagnostic.severity == vim.diagnostic.severity.ERROR then
-        return icons.diagnostics.Error
-      elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-        return icons.diagnostics.Warn
-      elseif diagnostic.severity == vim.diagnostic.severity.INFO then
-        return icons.diagnostics.Info
-      elseif diagnostic.severity == vim.diagnostic.severity.HINT then
-        return icons.diagnostics.Hint
-      end
-
-      return ""
+      return severities[diagnostic.severity]
     end,
   },
   float = {
