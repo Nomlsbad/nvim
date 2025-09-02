@@ -2,6 +2,7 @@ local icons = require("config.icons")
 
 vim.diagnostic.config({
   signs = {
+    severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN },
     text = {
       [vim.diagnostic.severity.ERROR] = "", -- icons.diagnostics.Error,
       [vim.diagnostic.severity.WARN] = "",  -- icons.diagnostics.Warn,
