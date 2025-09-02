@@ -17,7 +17,7 @@ vim.diagnostic.config({
     },
   },
   virtual_text = {
-    source = "if_many",
+    source = false,
     prefix = function(diagnostic, i, total)
       if i ~= total then return "" end
 
