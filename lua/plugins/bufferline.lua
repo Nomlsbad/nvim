@@ -11,12 +11,10 @@ return {
       { "<leader>b3", "<cmd>BufferLineGoToBuffer 3<cr>", desc = "Go to 3rd buffer" },
       { "<leader>b4", "<cmd>BufferLineGoToBuffer 4<cr>", desc = "Go to 4th buffer" },
       { "<leader>b5", "<cmd>BufferLineGoToBuffer 5<cr>", desc = "Go to 5th buffer" },
-      { "<leader>bd", "<cmd>.bdelete<cr>",               desc = "Delete Buffers" },
-      { "<leader>bo", "<cmd>BufferLineCloseOther<cr>",   desc = "Delete other Buffers" },
-      { "<S-tab>",    "<cmd>BufferLineCyclePrev<cr>",    desc = "Prev Buffer" },
-      { "<tab>",      "<cmd>BufferLineCycleNext<cr>",    desc = "Next Buffer" },
-      { "[B",         "<cmd>BufferLineMovePrev<cr>",     desc = "Move buffer prev" },
-      { "]B",         "<cmd>BufferLineMoveNext<cr>",     desc = "Move buffer next" },
+      { "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+      { "<tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+      { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+      { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
     },
     opts = {
       options = {
