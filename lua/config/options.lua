@@ -8,7 +8,6 @@ opt.colorcolumn = "100"
 opt.confirm = true
 opt.cursorline = true
 opt.cursorlineopt = "line,number"
-opt.expandtab = true
 opt.exrc = true
 opt.fillchars = {
   foldopen = "",
@@ -25,6 +24,7 @@ opt.number = true
 opt.relativenumber = true
 opt.ruler = false
 opt.sessionoptions = {
+  "blank",
   "buffers",
   "curdir",
   "folds",
