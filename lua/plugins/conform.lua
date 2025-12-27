@@ -38,13 +38,19 @@ return {
       python = { "isort", "black" },
       cpp = { "clang-format" },
       c = { "clang-format" },
-      go = { "gofumpt", "goimports", "golines" },
+      go = { "golangci-lint" },
+      sh = { "shfmt" },
     },
     -- Set default options
     default_format_opts = {
       lsp_format = "fallback",
     },
-
+    -- Set the log level. Use `:ConformInfo` to see the location of the log file.
+    log_level = vim.log.levels.ERROR,
+    -- Conform will notify you when a formatter errors
+    notify_on_error = true,
+    -- Conform will notify you when no formatters are available for the buffer
+    notify_no_formatters = true,
     -- Set up format-on-save
     format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable
@@ -52,11 +58,7 @@ return {
       return { timeout_ms = 500 }
     end,
     -- Customize formatters
-    formatters = {
-      golines = {
-        prepend_args = { "--max-len=100" },
-      },
-    },
+    formatters = {},
   },
   init = function()
     -- If you want the formatexpr, here is the place to set it
