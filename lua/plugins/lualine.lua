@@ -5,25 +5,40 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        -- section_separators = {},
-        -- component_separators = {},
+        section_separators = { left = "", right = "" },
+        component_separators = "",
         disabled_filetypes = {
           "neo-tree",
         },
         ignore_focuse = {},
       },
       sections = {
-        lualine_a = { "mode" },
-        lualine_b = { { "", draw_empty = true } },
+        lualine_a = {
+          {
+            "mode",
+            separator = { left = "", right = "" },
+          },
+        },
+        lualine_b = {},
         lualine_c = {
           { "branch", icon = "" },
           { "diff", symbols = { added = " ", modified = " ", removed = " " } },
-          { "filename", path = 1, separator = "" },
-          { "filetype", separator = "", icon_only = true, icon = { align = "left" } },
         },
-        lualine_x = { "diagnostics", "lsp_status" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
+        lualine_x = {
+          "diagnostics",
+          {
+            "lsp_status",
+            icon = "",
+            symbols = { done = "" },
+          },
+        },
+        lualine_y = {},
+        lualine_z = {
+          {
+            "location",
+            separator = { left = "", right = "" },
+          },
+        },
       },
     },
   },
