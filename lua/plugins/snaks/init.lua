@@ -8,5 +8,4 @@ return {
       },
     },
   },
-  require("plugins.snaks.scroll"),
 }
