@@ -1,4 +1,12 @@
 return {
-  require("plugins.snaks.ident"),
+  {
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      terminal = {
+        enabled = false,
+      },
+    },
+  },
   require("plugins.snaks.scroll"),
 }
