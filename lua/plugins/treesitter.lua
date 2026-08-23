@@ -1,21 +1,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = false,
-    -- branch = "main",
+    lazy = false,
+    branch = "main",
     build = ":TSUpdate",
-    init = function(plugin)
-      -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
-      -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
-      -- no longer trigger the **nvim-treesitter** module to be loaded in time.
-      -- Luckily, the only things that those plugins need are the custom queries, which we make available
-      -- during startup.
-      require("lazy.core.loader").add_to_rtp(plugin)
-      require("nvim-treesitter.query_predicates")
-    end,
     opts = {
-      highlight = { enable = true },
-      indent = { enable = false },
       ensure_installed = {
         "asm",
         "bash",
@@ -45,6 +34,28 @@ return {
         "yaml",
       },
     },
-    config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,
+    config = function(_, opts)
+      local ts = require("nvim-treesitter")
+
+      local ensure_installed = opts.ensure_installed
+      local already_installed = ts.get_installed()
+
+      local to_install = vim
+        .iter(ensure_installed)
+        :filter(function(parser)
+          return not vim.tbl_contains(already_installed, parser)
+        end)
+        :totable()
+
+      if #to_install > 0 then
+        ts.install(to_install)
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+    end,
   },
 }
