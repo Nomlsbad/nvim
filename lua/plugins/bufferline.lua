@@ -18,29 +18,43 @@ return {
     },
     opts = {
       options = {
+        mode = "buffers",
+        numbers = "none",
+        close_command = false,
+        right_mouse_command = false,
+        left_mouse_command = false,
+        middle_mouse_command = false,
         indicator = {
-          icon = "▉", -- this should be omitted if indicator style is not 'icon'
-          style = "icon",
+          icon = "", -- this should be omitted if indicator style is not 'icon'
+          style = "none",
         },
-        diagnostic = "nvim_lsp",
-        diagnostics_update_on_event = true, -- use nvim's diagnostic handler
+        buffer_close_icon = "",
+        modified_icon = "● ",
+        close_icon = "",
+        diagnostic = false,
+        diagnostics_update_on_event = false, -- use nvim's diagnostic handler
         offsets = {
           {
             filetype = "neo-tree",
             text = "File Explorer",
             highlight = "Directory",
             text_align = "left",
+            separator = false,
           },
         },
         color_icons = true,
         show_buffer_icons = true,
-        show_buffer_close_icons = true,
-        show_close_icon = true,
+        show_buffer_close_icons = false,
+        show_close_icon = false,
         show_tab_indicators = true,
         show_duplicate_prefix = true,
-        separator_style = "thin",
+        separator_style = "slant",
         always_show_bufferline = true,
-        auto_toggle_bufferline = true,
+        persist_buffer_sort = false,
+        hover = {
+          enabled = false,
+        },
+        sort_by = "insert_after_current",
       },
     },
   },

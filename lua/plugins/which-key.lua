@@ -5,12 +5,13 @@ return {
     keys = {
       {
         "<leader>?",
-        function() require("which-key").show({ global = false }) end,
-        desc = "Buffer Local Keymaps (which-key)",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps",
       },
     },
     opts = {
-      present = "helix",
       win = {
         no_overlap = false,
         width = { min = 25, max = 100 },
@@ -20,6 +21,10 @@ return {
       },
       layout = {
         width = 50,
+      },
+      keys = {
+        scroll_down = "<c-a-d>", -- binding to scroll down inside the popup
+        scroll_up = "<c-a-u>", -- binding to scroll up inside the popup
       },
     },
   },

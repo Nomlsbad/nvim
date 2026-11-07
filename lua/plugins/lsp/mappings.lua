@@ -17,12 +17,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gY", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
     map("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
     map("n", "gr", vim.lsp.buf.references, { desc = "References" })
-    map("n", "gh", function()
-      vim.lsp.buf.typehierarchy("subtypes")
-    end, { desc = "Subtypes Hierarchy" })
-    map("n", "gH", function()
-      vim.lsp.buf.typehierarchy("supertypes")
-    end, { desc = "Supertypes Hierarchy" })
+    map(
+      "n",
+      "gh",
+      function() vim.lsp.buf.typehierarchy("subtypes") end,
+      { desc = "Subtypes Hierarchy" }
+    )
+    map(
+      "n",
+      "gH",
+      function() vim.lsp.buf.typehierarchy("supertypes") end,
+      { desc = "Supertypes Hierarchy" }
+    )
 
     map({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
     map("n", "<space>cr", vim.lsp.buf.rename, { desc = "Rename" })
@@ -32,12 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "D", vim.diagnostic.open_float, { desc = "Diagnostic" })
 
     map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace Folder" })
-    map(
-      "n",
-      "<space>wr",
-      vim.lsp.buf.remove_workspace_folder,
-      { desc = "Remove Workspace Folder" }
-    )
+    map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove Workspace Folder" })
     map(
       "n",
       "<space>wl",

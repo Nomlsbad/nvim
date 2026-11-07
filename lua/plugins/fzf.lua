@@ -27,6 +27,10 @@ return {
       { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "Word" },
       { "<leader>sw", "<cmd>FzfLua grep_cvisual<cr>", mode = "v", desc = "Selection" },
     },
+
+    ---@module "fzf-lua"
+    ---@type fzf-lua.Config|{}
+    ---@diagnostic disable: missing-fields
     opts = {
       "default-title",
       keymap = {
@@ -36,10 +40,17 @@ return {
           ["<M-Esc>"] = "abort",
         },
       },
+      files = {
+        find_opts = [[-type f \! -path '*/.git/*' \! -path '*/.jj/*' \! -path '*/.cache/*' \! -path '*/build/*']],
+        rg_opts = [[--color=never --files -g "!.git" -g "!.jj" -g "!.cache" -g "!build"]],
+        fd_opts = [[--color=never --type f --type l --exclude .git --exclude .jj --exclude .cache --exclude build]],
+        no_ignore = true,
+      },
       oldfiles = {
         cwd_only = true,
         include_current_session = true,
       },
     },
+    ---@diagnostic enable: missing-fields
   },
 }

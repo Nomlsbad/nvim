@@ -21,6 +21,10 @@ return {
       current_line_blame_opts = {
         delay = 100,
       },
+      signs_staged_enable = false,
+      signcolumn = false,
+      numhl = true,
+      linehl = false,
       on_attach = function(buffer)
         local gitsigns = require("gitsigns")
 
@@ -60,5 +64,5 @@ return {
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
     },
-  }
+  },
 }

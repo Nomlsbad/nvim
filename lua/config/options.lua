@@ -1,11 +1,10 @@
+vim.g.autoformat = false
+
 local opt = vim.opt
 
 opt.autoread = true
 opt.breakindent = true
---opt.cindent = true
---opt.cinwords = "if,else,while,do,for,try,catch"
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
-opt.colorcolumn = "100"
 opt.confirm = true
 opt.copyindent = true
 opt.cursorline = true
@@ -22,11 +21,13 @@ opt.fillchars = {
   eob = " ",
 }
 opt.laststatus = 3
+opt.listchars = "tab:> ,space:∙,nbsp:+"
 opt.matchpairs = "(:),{:},[:],<:>"
 opt.mouse = "a"
 opt.number = true
 opt.relativenumber = true
 opt.ruler = false
+opt.scrolloff = 2
 opt.sessionoptions = {
   "blank",
   "buffers",
@@ -40,14 +41,17 @@ opt.sessionoptions = {
   "skiprtp",
 }
 opt.shiftround = true
-opt.shiftwidth = 4
+--opt.shiftwidth = 4
 opt.showmode = false
-opt.signcolumn = "yes"
+opt.signcolumn = "number"
 opt.smartindent = true
-opt.smarttab = true
+--opt.smarttab = true
 opt.smoothscroll = true
-opt.softtabstop = 4
+opt.softtabstop = -1
+opt.spell = true
+opt.spelloptions = "camel"
 opt.splitright = true
+--opt.tabstop = 4
 opt.termguicolors = true
 opt.timeoutlen = 400
 opt.undofile = true
