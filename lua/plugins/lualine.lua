@@ -10,7 +10,7 @@ return {
         disabled_filetypes = {
           "neo-tree",
         },
-        ignore_focuse = {},
+        ignore_focus = true,
       },
       sections = {
         lualine_a = {
